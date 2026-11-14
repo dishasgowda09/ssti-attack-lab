@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <title>Vulnerable card</title>
+  <style>
+    body{font-family:system-ui;max-width:680px;margin:40px auto;padding:0 16px}
+    .card{border:2px dashed #c33;border-radius:10px;padding:20px;background:#fff6f6}
+    a{color:#06c}
+    input{width:100%;padding:10px;font-size:16px}
+    button{margin-top:10px;padding:10px 16px;font-size:16px}
+  </style>
+</head>
+<body>
+  <h1>🪪 Greeting Card Generator <small style="color:#c33">(vulnerable)</small></h1>
+  <form action="/vulnerable" method="get">
+    <input name="name" value="{{ name_val }}">
+    <button>Generate</button>
+  </form>
+
+  <div class="card">
+    <h2>Your card</h2>
+    <p>{{ rendered|safe }}</p>
+  </div>
+
+  <p><a href="/">&larr; back</a></p>
+</body>
+</html>

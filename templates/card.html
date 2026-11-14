@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <title>Secure card</title>
+  <style>
+    body{font-family:system-ui;max-width:680px;margin:40px auto;padding:0 16px}
+    .card{border:2px solid #2a7;border-radius:10px;padding:20px;background:#f3fbf6}
+    a{color:#06c}
+    input{width:100%;padding:10px;font-size:16px}
+    button{margin-top:10px;padding:10px 16px;font-size:16px}
+  </style>
+</head>
+<body>
+  <h1>🪪 Greeting Card Generator <small style="color:#2a7">(secure)</small></h1>
+  <form action="/secure" method="get">
+    <input name="name" value="{{ name }}">
+    <button>Generate</button>
+  </form>
+
+  {# 'name' is an auto-escaped context variable. {{7*7}} typed by the user
+     is printed as the literal text "{{7*7}}", never executed. #}
+  <div class="card">
+    <h2>Your card</h2>
+    <p>Hello, {{ name }}! Have a lovely day.</p>
+  </div>
+
+  <p><a href="/">&larr; back</a></p>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <title>SSTI Lab</title>
+  <style>
+    body{font-family:system-ui;max-width:720px;margin:48px auto;padding:0 16px;line-height:1.5}
+    .box{border:1px solid #ddd;border-radius:10px;padding:18px 20px;margin:16px 0}
+    .vuln{border-color:#c33;background:#fff6f6}
+    .safe{border-color:#2a7;background:#f3fbf6}
+    a.btn{display:inline-block;margin-top:8px;padding:10px 16px;border-radius:8px;text-decoration:none;color:#fff}
+    .vuln a.btn{background:#c33}.safe a.btn{background:#2a7}
+    code{background:#eee;padding:1px 5px;border-radius:4px}
+  </style>
+</head>
+<body>
+  <h1>🪪 Greeting Card Generator</h1>
+  <p>A tiny web app for an Application Security demo on
+     <b>Server-Side Template Injection (SSTI)</b> leading to
+     <b>Remote Code Execution (RCE)</b>.</p>
+
+  <div class="box vuln">
+    <h3>❌ Vulnerable version</h3>
+    <p>User input is placed straight into the template that the server executes.
+       Try entering <code>{{7*7}}</code> as the name.</p>
+    <a class="btn" href="/vulnerable?name=friend">Open vulnerable app</a>
+  </div>
+
+  <div class="box safe">
+    <h3>✅ Secure version</h3>
+    <p>Same feature, but input is treated as <i>data</i>, not template code.
+       The same payload is shown literally and never runs.</p>
+    <a class="btn" href="/secure?name=friend">Open secure app</a>
+  </div>
+
+  <p style="color:#888">Runs on localhost only. For educational use in a controlled lab.</p>
+</body>
+</html>
